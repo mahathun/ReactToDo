@@ -21,6 +21,7 @@ module.exports = function(config){
     webpack : webpackConfig,
     webpackServer:{
       noInfo : true
-    }
+    },
+    browserNoActivityTimeout: 100000
   });
 };
