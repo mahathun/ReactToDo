@@ -1,0 +1,10 @@
+.todo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .todo-datetime{
+    font-size: .6rem;
+    color:$light-grey;
+  }
+}
