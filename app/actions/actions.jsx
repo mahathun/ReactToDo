@@ -1,6 +1,6 @@
 export var setSearchText = (searchText)=>{
   return {
-    type: 'SEARCH_TEXT',
+    type: 'SET_SEARCH_TEXT',
     searchText
   };
 };

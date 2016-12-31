@@ -5,7 +5,7 @@ var moment = require('moment');
 describe('Actions', ()=>{
   it('should generate the searchText action', ()=>{
     var action = {
-      type:'SEARCH_TEXT',
+      type:'SET_SEARCH_TEXT',
       searchText: 'dog'
     };
 
