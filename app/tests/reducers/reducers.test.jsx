@@ -30,20 +30,20 @@ describe('Reducers', ()=>{
   });
 
 describe('todosReducer', ()=>{
-  describe('addTodoReducer', ()=>{
-    it('should add todo', ()=>{
-      var action = {
-        type:'ADD_TODO',
-        text: 'Test todo'
-      };
 
-      var res = reducers.todosReducer(df([]), df(action));
+  it('should add todo', ()=>{
+    var action = {
+      type:'ADD_TODO',
+      text: 'Test todo'
+    };
 
-      expect(res.length).toBe(1);
-      expect(res[0].text).toBe(action.text);
+    var res = reducers.todosReducer(df([]), df(action));
 
-    });
+    expect(res.length).toBe(1);
+    expect(res[0].text).toBe(action.text);
+
   });
+
 
 
   it('should toggle todo completed',()=>{
