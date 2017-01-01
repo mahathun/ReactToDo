@@ -44,7 +44,40 @@ describe('todosReducer', ()=>{
 
   });
 
+  it('should add existing todos', ()=>{
+    var todos=[
+      {
+        id:1,
+        text:'one',
+        completed:false,
+        completedAt:undefined,
+        createdAt:100
+      },
+      {
+        id:2,
+        text:'two',
+        completed:false,
+        completedAt:undefined,
+        createdAt:200
+      },
+      {
+        id:3,
+        text:'three',
+        completed:false,
+        completedAt:undefined,
+        createdAt:300
+      }
+    ];
 
+    var action = {
+      type:'ADD_TODOS',
+      todos
+    };
+
+    var res =  reducers.todosReducer(df([]), df(action));
+    expect(res.length).toBe(todos.length);
+    expect(res[0]).toEqual(todos[0]);
+  });
 
   it('should toggle todo completed',()=>{
     var action = {
