@@ -34,13 +34,13 @@ describe('todosReducer', ()=>{
   it('should add todo', ()=>{
     var action = {
       type:'ADD_TODO',
-      text: 'Test todo'
+      todo: {id:'dddd', text: 'Test todo', completed:false, completedAt:null, createdAt:500}
     };
 
     var res = reducers.todosReducer(df([]), df(action));
 
     expect(res.length).toBe(1);
-    expect(res[0].text).toBe(action.text);
+    expect(res[0]).toEqual(action.todo);
 
   });
 

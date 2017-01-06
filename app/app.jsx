@@ -11,6 +11,7 @@ var store = require('configureStore').configure();
 var actions = require('actions');
 
 
+
 store.subscribe(()=>{
   var state = store.getState();
   console.log("The new state is : ", state);
