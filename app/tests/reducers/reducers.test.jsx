@@ -81,8 +81,9 @@ describe('todosReducer', ()=>{
 
   it('should toggle todo completed',()=>{
     var action = {
-      type:'TOGGLE_TODO',
-      id:2
+      type:'UPDATE_TODO',
+      id:2,
+      updates:{completed:true,completedAt:5002}
     }
 
     var todos = [
@@ -94,6 +95,7 @@ describe('todosReducer', ()=>{
 
     expect(res[1].completed).toBe(true);
     expect(res[1].completedAt).toBeA('number');
+    expect(res[1].text).toBe(todos[1].text);
   });
 
 

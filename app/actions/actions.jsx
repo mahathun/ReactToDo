@@ -16,26 +16,6 @@ export var addTodo = (todo)=>{
   };
 };
 
-export var addTodos = (todos)=>{
-  return {
-    type:'ADD_TODOS',
-    todos
-  }
-}
-
-export var toggleShowCompleted = ()=>{
-  return {
-    type: 'TOGGLE_SHOW_COMPLETED'
-  };
-};
-
-export var toggleTodo = (id)=>{
-  return {
-    type: 'TOGGLE_TODO',
-    id
-  };
-};
-
 export var startAddTodo = (text)=>{
   return (dispatch, getState)=>{
 
@@ -49,6 +29,43 @@ export var startAddTodo = (text)=>{
     var todoRef = firebaseRef.child('todos').push(todo);
 
     return todoRef.then(dispatch(addTodo({...todo, id:todoRef.key})));
+
+  }
+}
+
+export var addTodos = (todos)=>{
+  return {
+    type:'ADD_TODOS',
+    todos
+  }
+}
+
+export var toggleShowCompleted = ()=>{
+  return {
+    type: 'TOGGLE_SHOW_COMPLETED'
+  };
+};
+
+export var updateTodo = (id, updates)=>{
+  return {
+    type: 'UPDATE_TODO',
+    id,
+    updates
+  };
+};
+
+export var startToggleTodo = (id, completed)=>{
+  return (dispatch, getState)=>{
+
+    var todoRef = firebaseRef.child(`todos/${id}`);
+
+    var updates = {
+      completed,
+      completedAt:completed?moment().unix():null
+    };
+    return todoRef.update(updates).then(()=>{
+      dispatch(updateTodo(id,updates));
+    });
 
   }
 }
