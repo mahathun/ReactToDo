@@ -66,6 +66,8 @@ describe('Actions', ()=>{
     expect(res).toEqual(action);
   });
 
+
+
   it('should generate toggleShowCompleted action', ()=>{
     var action = {
       type:"TOGGLE_SHOW_COMPLETED"
@@ -93,11 +95,17 @@ describe('Actions', ()=>{
     var testTodoRef = firebaseRef.child('todos').push();
 
     beforeEach((done)=>{
-      testTodoRef.set({
-        text:'test todo',
-        completed:false,
-        createdAt:23432
-      }).then(()=>done());
+      var todosRef = firebaseRef.child('todos');
+
+      todosRef.remove().then(()=>{
+        return testTodoRef.set({
+                                text:'test todo',
+                                completed:false,
+                                createdAt:23432
+                              });
+      })
+      .then(()=>done())
+      .catch(done);
     });
 
     afterEach((done)=>{
@@ -116,6 +124,27 @@ describe('Actions', ()=>{
       }, done);
 
     });
+
+
+      it('should fetch todos and dispatch ADD_TODOS actions', (done)=>{
+        var mockStore = createMockStore({});
+
+        mockStore.dispatch(actions.startAddTodos()).then(()=>{
+          var mockActions = mockStore.getActions();
+
+          expect(mockActions[0]).toInclude({type:'ADD_TODOS'});
+          expect(mockActions[0].todos.length).toBe(1);
+          expect(mockActions[0].todos).toInclude(
+            {
+              id:testTodoRef.key,
+              text:'test todo',
+              completed:false,
+              createdAt:23432
+          }
+        );
+          done();
+        }, done);
+      });
 
 
   });

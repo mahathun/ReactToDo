@@ -12,15 +12,17 @@ var actions = require('actions');
 
 
 
-store.subscribe(()=>{
-  var state = store.getState();
-  console.log("The new state is : ", state);
-  TodoAPI.setTodos(state.todos);
-});
+// store.subscribe(()=>{
+//   var state = store.getState();
+//   console.log("The new state is : ", state);
+//   TodoAPI.setTodos(state.todos);
+// });
 
-var initialTodos = TodoAPI.getTodos();
+// var initialTodos = TodoAPI.getTodos();
 
-store.dispatch(actions.addTodos(initialTodos));
+// store.dispatch(actions.addTodos(initialTodos));
+
+store.dispatch(actions.startAddTodos());
 
 //loading foundation
 $(document).foundation();
