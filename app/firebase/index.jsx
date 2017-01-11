@@ -1,12 +1,12 @@
 import firebase from 'firebase';
-
+// console.log(process.env);
 try {
   var config = {
-     apiKey: "AIzaSyDtA9e-0EaYRE1uApEWy7Uha7D5AsyJzbo",
-     authDomain: "dan-todo-app.firebaseapp.com",
-     databaseURL: "https://dan-todo-app.firebaseio.com",
-     storageBucket: "dan-todo-app.appspot.com",
-     messagingSenderId: "1041923421094"
+     apiKey: process.env.API_KEY,
+     authDomain: process.env.AUTH_DOMAIN,
+     databaseURL: process.env.DATABASE_URL,
+     storageBucket: process.env.STORAGE_BUCKET,
+     messagingSenderId: process.env.MESSAGING_SENDER_ID
    };
    firebase.initializeApp(config);
 } catch (e) {
