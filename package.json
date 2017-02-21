@@ -6,7 +6,7 @@
   "scripts": {
     "test": "set NODE_ENV=test& karma start",
     "build": "webpack -w",
-    "start": "npm run build && node server.js"
+    "start": "webpack & node server.js"
   },
   "author": "Dan",
   "license": "MIT",
