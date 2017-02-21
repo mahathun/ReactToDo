@@ -3,8 +3,10 @@ var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux');
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
-var TodoApp = require('TodoApp');
+// var TodoApp = require('TodoApp');
+import TodoApp from 'TodoApp';
 var TodoAPI = require('TodoAPI');
+import Login from 'Login';
 
 // var store = require('configureStore').configure({todos:TodoAPI.getTodos()});
 var store = require('configureStore').configure();
@@ -34,7 +36,12 @@ require('style!css!sass!applicationStyles');
 ReactDOM.render(
   <div>
     <Provider store={store}>
-      <TodoApp />
+      <Router history={hashHistory}>
+        <Route path="/">
+          <Route path="todo/" component={TodoApp}/>
+          <IndexRoute component={Login} />
+        </Route>
+      </Router>
     </Provider>
   </div>,
   document.getElementById('app')
