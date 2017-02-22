@@ -98,6 +98,39 @@ describe('todosReducer', ()=>{
     expect(res[1].text).toBe(todos[1].text);
   });
 
+  it('should clean todos object', ()=>{
+    var todos=[
+      {
+        id:1,
+        text:'one',
+        completed:false,
+        completedAt:undefined,
+        createdAt:100
+      },
+      {
+        id:2,
+        text:'two',
+        completed:false,
+        completedAt:undefined,
+        createdAt:200
+      },
+      {
+        id:3,
+        text:'three',
+        completed:false,
+        completedAt:undefined,
+        createdAt:300
+      }
+    ];
+    var action = {
+      type: 'LOGOUT'
+    };
+
+    var res = reducers.todosReducer(df(todos), df(action));
+    expect(res).toEqual([]);
+
+
+  });
 
 
 });
