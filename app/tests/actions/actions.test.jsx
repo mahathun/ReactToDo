@@ -90,6 +90,24 @@ describe('Actions', ()=>{
   });
 
 
+  it('should generate login action', ()=>{
+    var uid = '345kdfa';
+
+    var action = {
+      type: 'LOGIN',
+      uid
+    }
+
+    expect(actions.login(uid)).toEqual(action);
+  });
+
+  it('should generate logout action', ()=>{
+    var action = {type:'LOGOUT'};
+
+    expect(actions.logout()).toEqual(action);
+  });
+
+
   describe('Tests with firebase todos', ()=>{
 
     var testTodoRef = firebaseRef.child('todos').push();

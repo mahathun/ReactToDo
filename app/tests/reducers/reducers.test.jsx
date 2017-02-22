@@ -102,6 +102,28 @@ describe('todosReducer', ()=>{
 
 });
 
+  describe('authReducer', ()=>{
+    it('should set uid upon login', ()=>{
+      var uid = 'asd234';
+      var action = {
+        type: 'LOGIN',
+        uid
+      }
+
+      var res = reducers.authReducer(df(''), df(action));
+
+      expect(res).toEqual({uid});
+    });
+
+    it('should set uid to {}', ()=>{
+      var auth = {uid:'asdew123'};
+      var action = {type: 'LOGOUT'};
+      var res = reducers.authReducer(df(auth), df(action));
+
+      expect(res).toEqual({});
+    });
+
+  });
 
 
 
